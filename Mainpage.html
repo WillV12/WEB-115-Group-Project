@@ -15,35 +15,105 @@
         }
         button {
             width: 1600px; 
-            height: 180px; 
+            height: 250px; 
             margin-bottom: 10px
         }
     </style>
 
 </head>
 <body>
-    <h1>WACKY HOMOSEXUAL GAMES LLC</h1>
+    <h1>WACKY :3 GAMES LLC</h1>
     <div id="topTabs">
-        <a href="gavin\gavin.html"><button>Gavin</button></a>
+        <a href="gavin\gavin.html"><button id="eek" onmouseover="eeks()" onmouseout="stopAudio()" class="gay">Gavin</button></a>
     </div>
     <div>
-        <a href="mathgames\Math.html"><button>Math Games!</button></a>
+        <a href="physics\Pgames.html"><button id="alien" onmouseover="aliens()" onmouseout="stopAudio()" class="math">Math Games!</button></a>
     </div>
     <div>
-        <a href="liam\liam.html"><button>Liam</button></a>
+        <a href="liam\liam.html"><button id="jackpot" onmouseover="jackpots()" onmouseout="stopAudio()" class="gambling">Liam</button></a>
     </div>
     
     <style>
         body {
             background-image: url('images/snowing.gif');
+            font-family: 'Comic Sans MS', cursive;
+        }
+
+        button:hover{
+            transform: scale(1.01)
+        }
+
+        .gay {
+            font-family: 'Impact', monospace;
+            font-size: 45px;
+            color: white;
+            -webkit-text-stroke: 2px black;
+            background: url('images/gay_banner.jpg');
+            background-size: 1600px 256px;
+            background-repeat: no-repeat;
+        }
+
+        .math {
+            font-family: 'Luminari', monospace;
+            font-size: 50px;
+            color: white;
+            -webkit-text-stroke: 2px black;
+            font-weight: bolder;
+            background: url('images/math_banner.png');
+            background-size: 1600px 256px;
+            background-repeat: no-repeat;
+        }
+
+        .gambling {
+            font-family: 'Apple Chancery', cursive;
+            font-size: 45px;
+            color: white;
+            -webkit-text-stroke: 2px black;
+            background: url('images/gambling_banner.gif');
+            background-size: 1600px 256px;
+            background-repeat: no-repeat;
         }
     </style>
 
     <script>
-        var christmas = new Audio('audios/CATFM-CHRISTMAS.mp3')
+        var christmas = new Audio('audios/CHRISTMAS.mp3')
+        var hohoho = new Audio('audios/hohoho.mp3')
+        var eek = new Audio('audios/supereek.mp3')
+        var grub = new Audio('audios/grub.mp3')
+        var alien = new Audio('audios/alien.mp3')
+        var jackpot = new Audio('audios/jackpot.mp3')        
+
+        christmas.volume = 0.5
+        christmas.loop = true
         christmas.play()
+        hohoho.play()
 
         document.body.style.backgroundImage = "url('images/snowing.gif')"
+
+        function eeks() {
+            eek.play()
+            grub.play()
+        }
+
+        function aliens() {
+            alien.play()
+        }
+
+        function jackpots() {
+            jackpot.play()
+        }
+
+        function stopAudio() {
+            eek.pause()
+            grub.pause()
+            alien.pause()
+            jackpot.pause()
+
+            eek.currentTime = 0
+            grub.currentTime = 0
+            alien.currentTime = 0
+            jackpot.currentTime = 0
+        }
     </script>
-</body>
+</body>  
 </html>

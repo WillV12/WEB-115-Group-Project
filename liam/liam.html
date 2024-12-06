@@ -4,8 +4,56 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="liam.js" defer></script>
+    <style>
+        body {
+         margin: 0;
+         display: flex;
+         flex-direction: column;
+         padding: 20px;
+         text-align: center;
+         align-items: center;
+        }
+        button {
+            width: 100px;
+            height: 50px;
+            margin-bottom: 10px
+        }
+    </style>
 </head>
 <body>
-    
+    <p>balls</p>
+
+    <div>
+        <a href="..\Mainpage.html"><button id="alien" onmouseover="NO()" onmouseout="stopAudio()">HOME</button></a>
+    </div>
+
+    <script>
+        var pleaseno = new Audio('../audios/God.mp3')
+        var please = new Audio('../audios/NO.mp3')
+        var gamblingMusic = new Audio('../audios/BoneDepot.mp3')
+
+        gamblingMusic.loop = true
+        gamblingMusic.play()
+
+        function NO() {
+            pleaseno.play()
+            pleaseno.volume = 0.5
+            please.play()
+        }
+
+        function stopAudio() {
+            pleaseno.pause()
+            pleaseno.currentTime = 0
+            please.pause()
+            please.currentTime = 0
+        }
+    </script>
+
+    <style>
+        button:hover{
+            transform: scale(1.05)
+        }
+    </style>
 </body>
 </html>
