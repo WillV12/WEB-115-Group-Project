@@ -1,11 +1,5 @@
-const fs = require('fs')
-
-
-
-
-
 function getImageNames() {
-    let ads = new Array()
+    let ads = url("../images/gavinImgaes")
 
     return ads
 }
@@ -28,4 +22,4 @@ function assignImages(ads) {
     }
 }
 let ads = getImageNames()
-assignImages(ads)
+console.log(ads)
