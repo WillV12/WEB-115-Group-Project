@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GAY TEST GAYGYAGAYGAYGAYGAYGAYGAYGAYGAYGAYGAYGAYGAYGAYGAYGAYGAYGAYGAYGAYGAYGAY</title>
-    <script src="gavin.js" defer></script>
+    <script type="module" src="gavin.js" defer></script>
 </head>
 <body>
     <style>
@@ -22,7 +22,7 @@
         }
         .questionArea {
             height: 700;
-            margin-bottom: 100px;
+            margin-bottom: 0px;
             width: device-width;
             border: 1px;
             overflow: hidden;
@@ -53,6 +53,7 @@
             background-color: rgb(85, 146, 126);
             width: 400px;
             height: 700px;
+            position: relative;
         }
         .blockAd {
             background-color: chocolate;
@@ -63,12 +64,30 @@
             height: 300px
 
         }
-        .ad {
+        img {
             width: inherit;
             height: inherit;
         }
         h1 {
 
+        }
+        .home {
+            margin-bottom: 30px; 
+            margin-top: 10px;
+            width: 50px;
+            height: 20px;
+            font-size: small;
+        }
+        button {
+            width: 300px;
+            height: 60px;
+            background-color: rgba(121, 96, 96, 0.582);
+            font-family: "Impact", monospace;
+            font-size: x-large;
+        }
+        .questionImage {
+            width: inherit;
+            height: 300px;
         }
     </style>
 
@@ -82,31 +101,39 @@
     </script>
 
 
-    <div class="flatAd" id="topAd"></div>
-    <a href="../Mainpage.html"><button id="home" style="margin-bottom: 30px; margin-top: 10px;">Home</button></a>
+    <div class="flatAd" id="topAd">
+        <img src="../images/prideflag.png" style="width: 1800px;">
+    </div>
+    <a href="../Mainpage.html"><button id="home" style="margin-bottom: 30px; margin-top: 10px;" class="home">Home</button></a>
+
+
     <div class="questionArea" id="questionArea">
         <div class="tallAd" id="tallAd">
-            <img class="ad" id="ad" src="../images/furry-boykisser.gif">
+            <img id="ad" src="">
         </div>
+
+
         <div class="question" id="question">
             <h1>Welcome to the gay... uh.. gay test</h1><br><br>
 
             <h2>hit the awesome button to start</h2>
+            <div class="questionImage">
+                <img src="..\images\gavinImages\jiggy-jolly.gif">
+            </div>
 
-
-            <button id="start" style="align-self: bottom"></button>
+            <button id="start" style="margin-top: 16%;">START</button>
 
 
 
         </div>
         <div class="rainbow">
-            <img class="ad" src="../images/furry-boykisser.gif">
+            <img id="ad" src="../images/prideflag.png">
         </div>
         <div class="blockAd" id="ad2">
-            <img class="ad">
+            <img id="ad">
         </div>
         <div class="blockAd" id="ad1">
-            <img class="ad">
+            <img id="ad">
         </div>
     </div>
 </body>
