@@ -1,0 +1,66 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+   <head>
+      <title>2-D Physics Simulator</title>
+      <!--Window-->
+      <link type="text/css" rel="stylesheet" href="lib/turtle.css" />
+      <script src="https://cdn.plot.ly/plotly-2.35.2.min.js" charset="utf-8"></script>
+      <meta charset="utf-8">
+   </head>
+   <body>
+      <div id="wrap">
+         <h1>2-D Projectile Motion Simulator</h1>
+         <div style="float: left; margin: 10px">
+         <a href="../../Mainpage.html"><button>Home</button></a>
+         <br>
+         <br>
+         <a href="../Pgames.html"><button>Back</button></a>
+         </div>
+         <div id="midcolumn">
+            <!--Turtle window-->
+            <h4>Canvas <span id="coords"></span></h4>
+            <canvas id="turtlecanvas" width="800" height="500"></canvas>
+            <canvas id="imagecanvas" width="800" height="500" style="display:none"></canvas>
+            <span id="message" class="message-hide">Coordinates has been copied to clipboard</span>
+            <input type="button" id="data" value="View Data">
+            <input type="button" id="remove" value = "Hide Data"> 
+            <div id="content"></div>
+         </div> <!-- midcolumn -->
+        <div id="rightcolumn">
+         <!--Form for inputs and calculation request-->
+         <form>
+            <label for="color_selector">Select your the color of the trajectory:</label>
+            <input type="color" id="color_selector" value="#000000">
+            <input type="button" id="colorButton" value="Select">
+            <input type = "button" id="randomize" value="Random">
+            <br>
+            <br>
+            <label for="X">X Value:</label>
+            <input type="number" id="X" value="0" max="5000">
+            
+            <label for="Y">Y Value:</label>
+            <input type="number" id="Y" value="0" max="5000"> 
+        
+            <label for="angle">Angle Value:</label>
+            <input type="number" id="angle" value="0" max="90">
+            <br>
+            <label for="height">Height Value:</label>
+            <input type="number" id="height" value="0" max="500">
+            <br>
+            <br>
+            <button type="submit" id="calculate">Calculate</button>
+            <input type="button" id="reset" value="Reset">
+            <hr>
+            <br>
+         </form> 
+         <br>
+         <div id="graph" style="width: 600px; height: 400px;">
+         </div>
+        </div>
+      </div> <!-- wrap-->
+      <!--Imports of Javascript files and libraries-->
+      <script type="text/javascript" src="lib/library.js"></script>
+      <script type="text/javascript" src="physics.js"></script>
+      <script type="text/javascript" src="misc.js"></script>
+   </body>
+</html>

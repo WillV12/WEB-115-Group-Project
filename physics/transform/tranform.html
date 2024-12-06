@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fourier Transform</title>
+    <style>
+        h1 {
+        padding: 20px;
+         text-align: center;
+         align-items: center;   
+        }
+        h2 {
+        padding: 20px;
+         text-align: center;
+         align-items: center;   
+        }
+        body {
+            display: block;
+            text-align: center;
+            align-items: center;
+        }
+    </style>
+
+    <script src="transform.js"></script>
+</head>
+<body style="background-color: black; color: cornflowerblue">
+    <h1>Fourier Transform Activity</h1>
+    <div style="float: left; margin: 10px">
+    <a href="../../Mainpage.html"><button>Home</button></a>
+    <br>
+    <br>
+    <a href="../Pgames.html"><button>Back</button></a>
+    </div>
+
+    <div id="rightcolumn" style="float: right; outline: 3px solid black">
+        <h2>Frequency Input</h2>
+        <form id="input">
+            <label for="freq1">Frequency 1</label>
+            <input id="freq1" type="range" value="1" min="1" max="100">
+            <br>
+            <p id="val1">Value: 1 Hz</p>
+            <br>
+            <br>
+            <label id="freq2">Frequency 2</label>
+            <input id="freq2" type="range" value="1" min="1" max="100">
+            <br>
+            <p id="val2">Value: 1 Hz</p>
+            <br>
+            <br>
+            <label id="freq3">Frequency 3</label>
+            <input id="freq3" type="range" value="1" min="1" max="100">
+            <br>
+            <p id="val3">Value: 1 Hz</p>
+            <br>
+            <br>
+            <br>
+            <button type="submit" style="margin: 10px;">Calculate</button>
+        </form>
+        <button id="clear" type="button" style="margin: 10px">Clear</button>
+    </div>
+    <div id="leftcolumn" style="float: left; outline: 3px solid black"></div>
+</body>
+</html>
