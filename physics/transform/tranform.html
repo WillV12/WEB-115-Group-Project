@@ -22,7 +22,8 @@
         }
     </style>
 
-    <script src="transform.js"></script>
+    <script src="transform.js" defer></script>
+    <script src="https://cdn.plot.ly/plotly-2.35.2.min.js" charset="utf-8"></script>
 </head>
 <body style="background-color: black; color: cornflowerblue">
     <h1>Fourier Transform Activity</h1>
@@ -33,32 +34,40 @@
     <a href="../Pgames.html"><button>Back</button></a>
     </div>
 
-    <div id="rightcolumn" style="float: right; outline: 3px solid black">
+    <div id="rightcolumn" style="float: right; outline: 3px solid white">
         <h2>Frequency Input</h2>
-        <form id="input">
+        <form id="inputForm">
             <label for="freq1">Frequency 1</label>
-            <input id="freq1" type="range" value="1" min="1" max="100">
+            <input id="freq1" type="range" value="1" min="1" max="50" 
+            oninput="hzUpdate(this.value, 1)"onchange="hzUpdate(this.value, 1)">
             <br>
             <p id="val1">Value: 1 Hz</p>
             <br>
             <br>
-            <label id="freq2">Frequency 2</label>
-            <input id="freq2" type="range" value="1" min="1" max="100">
+            <label for="freq2">Frequency 2</label>
+            <input id="freq2" type="range" value="1" min="1" max="50"
+            oninput="hzUpdate(this.value, 2)"onchange="hzUpdate(this.value, 2)">
             <br>
             <p id="val2">Value: 1 Hz</p>
             <br>
             <br>
-            <label id="freq3">Frequency 3</label>
-            <input id="freq3" type="range" value="1" min="1" max="100">
+            <label for="freq3">Frequency 3</label>
+            <input id="freq3" type="range" value="1" min="1" max="50"
+            oninput="hzUpdate(this.value, 3)"onchange="hzUpdate(this.value, 3)">
             <br>
             <p id="val3">Value: 1 Hz</p>
-            <br>
             <br>
             <br>
             <button type="submit" style="margin: 10px;">Calculate</button>
         </form>
         <button id="clear" type="button" style="margin: 10px">Clear</button>
     </div>
-    <div id="leftcolumn" style="float: left; outline: 3px solid black"></div>
+    <div id="centerColumn" style="float: right ;outline: 3px solid white; 
+    height: 1000px; width: 1000px; margin-left: 100px; margin-right: 100px;">
+        <p id="output1" style="width: 1000px; height: 200px"></p>
+        <p id="output2" style="width: 1000px; height: 200px"></p>
+        <p id="output3" style="width: 1000px; height: 200px"></p>
+    </div>
+    
 </body>
 </html>
