@@ -40,7 +40,7 @@ class SlotMachine {
             this.adStuff.classList.remove('show')
         })
 
-        setInterval(() => this.showRandomAd(), 45000)
+        setInterval(() => this.showRandomAd(), 30000)
     }
 
     showRandomAd() {
