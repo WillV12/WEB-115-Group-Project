@@ -65,7 +65,6 @@ class SlotMachine {
             '../images/ad2.jpg',
             '../images/ad3.jpg',
             '../images/ad4.jpg',
-            '../images/ad5.gif',
             '../images/ad6.jpg',
             '../images/ad7.jpg',
             '../images/ad8.jpg'
