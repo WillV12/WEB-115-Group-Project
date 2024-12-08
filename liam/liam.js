@@ -507,6 +507,8 @@ class SlotMachine {
             counts[index] = (counts[index] || 0) + 1
         })
 
+        let pairCount = Object.values(counts).filter(count => count === 2).length
+
         // find highest number of matching symbols
         let maxMatches = Math.max(...Object.values(counts))
 
@@ -527,6 +529,12 @@ class SlotMachine {
             message = '🐈🎺 Three of a kind! 🎺🐈'
             this.slotMachine.classList.add('winning-flash')
             this.mediumjackpot()
+        }
+
+        else if (maxMatches === 2 && pairCount === 2) {
+            winAmount = 50 // two pairs :3
+            message = '😸 Two pairs! Double win! 😸'
+            this.victorySounds()
         }
 
         else if (maxMatches === 2) {
