@@ -1,14 +1,25 @@
-var gamblingMusic = new Audio('../audios/BoneDepot.mp3')
-
-gamblingMusic.loop = true
-gamblingMusic.play()
-
 class SlotMachine {
     // initializews the game stats and stuff :3 constructors are weeeierd
+
+    songs = {
+        boneDepot: new Audio('../audios/BoneDepot.mp3'),
+        LegalWoes: new Audio('../audios/LegalWoes.mp3'),
+        AppartementTheme: new Audio('../audios/AppartementTheme.mp3'),
+        PawprintPanic: new Audio('../audios/PawprintPanic.mp3'),
+        OkayEveryone: new Audio('../audios/OkayEveryone.mp3'),
+        Downtown: new Audio('../audios/Downtown.mp3'),
+        Sunshine: new Audio('../audios/Sunshine.mp3'),
+        PlanarianPuzzle: new Audio('../audios/PlanarianPuzzle.mp3'),
+    }
+
+    currentSong = this.songs.boneDepot
 
     loanAlert = new Audio('../audios/loanAlert.mp3')
     payLoanSuccess = new Audio('../audios/chaChing.mp3')
     reelSpin = new Audio('../audios/spin.mp3')
+    mail = new Audio('../audios/yougotmail.mp3')
+    adSound = new Audio('../audios/adSound.mp3')
+    meow = new Audio('../audios/meow-1.mp3')
     
 
     images = [
@@ -31,6 +42,7 @@ class SlotMachine {
     spinCost = 20
     loanInterest = 1.20
 
+    // display ads every 30 seconds
     initializeAds() {
         this.closeAdButton = document.getElementById('closeAdButton')
         this.adStuff = document.getElementById('adStuff')
@@ -49,12 +61,19 @@ class SlotMachine {
             '../images/ad2.jpg',
             '../images/ad3.jpg',
             '../images/ad4.jpg',
-            '../images/ad5.gif'
+            '../images/ad5.gif',
+            '../images/ad6.jpg',
+            '../images/ad7.jpg',
+            '../images/ad8.jpg'
         ]
 
+        // picks random ad
         this.adImage.src = adImages[Math.floor(Math.random() * adImages.length)]
         this.adStuff.classList.add('show')
+        this.mail.play()
+        this.adSound.play()
 
+        // 2 second wait before being able toc lose ads
         this.closeAdButton.disabled = true
         setTimeout(() => {
             this.closeAdButton.disabled = false
@@ -65,8 +84,10 @@ class SlotMachine {
         this.initializeElements()
         this.setupEventListeners()
         this.startTimer()
-    
         this.initializeAds()
+
+        this.currentSong.loop = true
+        this.currentSong.play()
 
         this.reels.forEach(reel => {
             const img = reel.querySelector('img');
@@ -75,6 +96,11 @@ class SlotMachine {
     }
 
     initializeElements() {
+
+        // music selection
+        this.musicSelect = document.getElementById('musicSelect')
+
+        // grabbing reel ids
         this.reels = [
             document.getElementById('reel1'),
             document.getElementById('reel2'),
@@ -110,6 +136,18 @@ class SlotMachine {
         this.cancelLoanButton.addEventListener('click', () => this.loanStuff.classList.remove('show'));
         this.payLoanButton.addEventListener('click', () => this.payLoan());
         this.restartButton.addEventListener('click', () => window.location.href = '../Mainpage.html');
+        this.musicSelect.addEventListener('change', () => {
+            this.currentSong.pause()
+            this.currentSong.currentTime = 0
+
+            if (this.musicSelect.value === 'mute') {
+                return // so that it doesnt start a new one if mute selected
+            }
+
+            this.currentSong = this.songs[this.musicSelect.value]
+            this.currentSong.loop = true
+            this.currentSong.play()
+        })
     }
 
     showLoanStuff() {
@@ -125,6 +163,7 @@ class SlotMachine {
             this.timeLeft = 75; // reset time
             this.updateDisplays();
             this.loanStuff.classList.remove('show');
+            this.meow.play()
     
             // Restart the timer
             clearInterval(this.timer); // Clear any existing timer
@@ -173,6 +212,8 @@ class SlotMachine {
             this.paymentStuff.classList.remove('show')
             this.updateDisplays()
             this.startTimer()
+            this.loanAlert.pause()
+            this.loanAlert.currentTime = 0
             this.payLoanSuccess.play()
         } 
         else {
@@ -185,7 +226,8 @@ class SlotMachine {
         // array of all audio objects to stop
         const audios = [
             this.loanAlert,
-            gamblingMusic
+            this.reelSpin,
+            this.currentSong
         ];
         
         audios.forEach(audio => {
@@ -202,6 +244,8 @@ class SlotMachine {
         this.paymentStuff.classList.remove('show')
         this.deathStuff.classList.add('show');
         clearInterval(this.timer)
+
+        this.musicSelect.disabled = true
         
         const gameOver = new Audio('../audios/gameOver.mp3')
         gameOver.volume = 1
@@ -217,12 +261,14 @@ class SlotMachine {
         if (this.loan > 0) {
             this.timeCounter.textContent = this.timeLeft + "s"
             this.timeCounter.style.color = "#4dc3ff"
+            this.loanButton.textContent = "Loan Already Active"
         }
         
         // if not it'll be greyed out and say no active loans
         else {
             this.timeCounter.textContent = "No Active Loans"
             this.timeCounter.style.color = "#666666"
+            this.loanButton.textContent = "Take Out Loan"
         }
 
         // if player cant afford anything then it's disabled
@@ -313,7 +359,7 @@ class SlotMachine {
         }
 
         else if (maxMatches === 3) {
-            winAmount = 150 // 3 of a kind, medium win
+            winAmount = 350 // 3 of a kind, medium win
             message = '🐈🎺 Three of a kind! 🎺🐈'
             this.slotMachine.classList.add('winning-flash')
             this.mediumjackpot()

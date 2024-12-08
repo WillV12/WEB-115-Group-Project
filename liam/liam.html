@@ -3,8 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>🐈 FLOPPA'S CASINO! 🐈</title>
+    <link rel="icon" type="image/x-icon" href="../images/hair.jpg">
     <script src="liam.js" defer></script>
+
+    <div class="header">
+        <h1>🐈 FLOPPA'S CASINO 🐈</h1>
+    </div>
+
+    <div class="music-controls">Music:
+        <select id="musicSelect" class="music-dropdown">
+            <option value="boneDepot">Bone Depot</option>
+            <option value="AppartementTheme">Appartement</option>
+            <option value="Downtown">Downtown</option>
+            <option value="PlanarianPuzzle">Planarian Puzzle</option>
+            <option value="Sunshine">Sunshine</option>
+            <option value="LegalWoes">Legal Woes</option>
+            <option value="PawprintPanic">Pawprint Panic!</option>
+            <option value="OkayEveryone">Okay, Everyone!</option>
+            <option value="mute">🔇 MUTE 🔇</option>
+            
+        </select>
+    </div>
+
     <style>
         body {
             background:#1a1a1a;
@@ -15,6 +36,54 @@
             align-items: center;
             font-family: "Comic Sans MS", "Comic Sans", cursive;
             font-size: 24px
+        }
+
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            color: white;
+            background: #1a1a1a;  /* match your background color */
+            z-index: 999;
+            padding: 25px 0;
+        }
+
+        .header h1 {
+            font-size: 48px;
+            margin: 0;
+            font-family: "Comic Sans MS", "Comic Sans", cursive;
+        }
+   
+        .music-controls {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            color: white;
+            
+        }
+
+        .music-dropdown {
+            background: #333;
+            color: white;
+            padding: 5px 10px;
+            border: 1px solid #666;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            font-family: "Comic Sans MS", "Comic Sans", cursive;
+        }
+
+        .music-dropdown:hover {
+            background: #444;
+        }
+
+        .music-dropdown:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            background:  #222222;
         }
 
         .slot-machine {
