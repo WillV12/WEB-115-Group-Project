@@ -1,6 +1,5 @@
 class SlotMachine {
-    // initializews the game stats and stuff :3 constructors are weeeierd
-
+    // initializews the game stats and stuff :3
     songs = {
         boneDepot: new Audio('../audios/BoneDepot.mp3'),
         LegalWoes: new Audio('../audios/LegalWoes.mp3'),
