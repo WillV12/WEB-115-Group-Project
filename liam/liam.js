@@ -10,6 +10,7 @@ class SlotMachine {
         Downtown: new Audio('../audios/Downtown.mp3'),
         Sunshine: new Audio('../audios/Sunshine.mp3'),
         PlanarianPuzzle: new Audio('../audios/PlanarianPuzzle.mp3'),
+        MiniGolf: new Audio('../audios/MiniGolf.mp3')
     }
 
     currentSong = this.songs.boneDepot
@@ -383,15 +384,37 @@ class SlotMachine {
     // if they die
     die() {
         this.stopAllAudio()
+
+        // stop any possible drunk effects
+        this.drunkLevel = 0
+        const drunkStyle = document.getElementById('drunk-style')
+        if (drunkStyle) {
+        drunkStyle.remove()
+        }
+
+        this.heartbeat.pause()
+        this.heartbeat.currentTime = 0
+        this.currentSong.playbackRate = 1
+        this.currentSong.preservesPitch = true
+        this.mail.playbackRate = 1
+        this.mail.preservesPitch = true
+        this.reelSpin.playbackRate = 1
+        this.reelSpin.preservesPitch = true
+        this.loanAlert.playbackRate = 1
+        this.loanAlert.preservesPitch = true
+
+        // show death screen :3
         this.paymentStuff.classList.remove('show')
         this.deathStuff.classList.add('show');
         clearInterval(this.timer)
 
         this.musicSelect.disabled = true
         
-        const gameOver = new Audio('../audios/gameOver.mp3')
+        let gameOver = new Audio('../audios/gameOver.mp3')
+        let die = new Audio('../audios/die.mp3')
         gameOver.volume = 1
         gameOver.play()
+        die.play()
     }
     
     // updates all numbers on screen
