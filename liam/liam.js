@@ -517,7 +517,7 @@ class SlotMachine {
 
         // set winning amounts and messages based on matches
         if (maxMatches === 4) {
-            winAmount = 1000 // 4 of a kind, big jackpot
+            winAmount = 2000 // 4 of a kind, big jackpot
             message = '🐈🎉 JACKPOT! FOUR OF A KIND! 🎉🐈'
             this.slotMachine.classList.add('winning-flash')
             this.megaJackpot()
@@ -525,7 +525,7 @@ class SlotMachine {
         }
 
         else if (maxMatches === 3) {
-            winAmount = 350 // 3 of a kind, medium win
+            winAmount = 500 // 3 of a kind, medium win
             message = '🐈🎺 Three of a kind! 🎺🐈'
             this.slotMachine.classList.add('winning-flash')
             this.mediumjackpot()
