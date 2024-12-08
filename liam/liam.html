@@ -46,7 +46,6 @@
             text-align: center;
             color: white;
             background: #1a1a1a;  /* match your background color */
-            z-index: 999;
             padding: 25px 0;
         }
 
@@ -60,7 +59,6 @@
             position: fixed;
             top: 20px;
             right: 20px;
-            z-index: 1000;
             color: white;
             
         }
@@ -222,7 +220,6 @@
             position: fixed;
             top: 20px;
             left: 20px;
-            z-index: 1000;
             background: #000000;
             color: white;
             border: none;
@@ -287,6 +284,55 @@
             font-size: 32px;
         }
 
+        .shop-button {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            padding: 20px;
+            font-size: 18px;
+            border: none;
+            border-radius: 10px;
+            background-color: #2e539e;
+            color: white;
+            transition: background-color 0.3s;
+            font-family: "Comic Sans MS", "Comic Sans", cursive;
+            font-size: 32px;
+            
+        }
+
+        .shop-button:hover {
+            background-color: #2e539e;
+        }
+        
+        #minusBottle, #plusBottle {
+            padding: 10px 20px;
+            font-size: 18px;
+            margin: 5px;
+            border: none;
+            border-radius: 5px;
+            background-color: #4CAF50;
+            color: white;
+            font-family: "Comic Sans MS", "Comic Sans", cursive;
+        }
+
+        #buyAlcohol, #closeShopButton {
+            padding: 15px 30px;
+            font-size: 18px;
+            margin: 10px;
+            border: none;
+            border-radius: 10px;
+            background-color: #d57676;
+            color: black;
+            cursor: pointer;
+            font-family: "Comic Sans MS", "Comic Sans", cursive;
+        }
+
+        #bottleCount {
+            font-size: 20px;
+            margin: 0 15px;
+            font-family: "Comic Sans MS", "Comic Sans", cursive;
+        }
+
         .winning-flash {
             animation: flashGreen 0.5s ease-in-out 3;
         }
@@ -343,10 +389,28 @@
             </div>
         </div>
 
+        <div id="shopStuff" class="stuff">
+            <div class="loan-content">
+                <h1>Floppa's Shop</h1>
+                <h>ITEM OF THE DAY:</p>
+                <p style="color: rgb(255, 155, 155)"><b>🍺ALCOHOL🍺</b></p>
+                <p>"It's not gambling without alcohol poisoning!"</p>
+                <h5 style="color: yellow"><i>(50 dabloons per bottle)</i></h5>
+                
+                <button id="minusBottle">-</button>
+                <span id="bottleCount">0</span>
+                <button id="plusBottle">+</button>
+        
+                <button id="buyAlcohol">Buy Drink</button>
+                <button id="closeShopButton">Cancel</button>
+            </div>
+        </div>
+
     <!--controls buttons-->
         <div class="controls">
             <button class="spin-button" id="spinButton">SPIN!!! (-20 dabloons)</button>
             <button class="loan-button" id="loanButton">Take Out Loan</button>
+            <button class="shop-button" id="shopButton">Floppa's Shop</button>
         </div>
 
         <div class="win-message" id="winMessage"></div>

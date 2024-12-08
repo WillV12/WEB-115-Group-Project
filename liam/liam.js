@@ -1,5 +1,6 @@
 class SlotMachine {
     // initializews the game stats and stuff :3
+    
     songs = {
         boneDepot: new Audio('../audios/BoneDepot.mp3'),
         LegalWoes: new Audio('../audios/LegalWoes.mp3'),
@@ -19,7 +20,10 @@ class SlotMachine {
     mail = new Audio('../audios/yougotmail.mp3')
     adSound = new Audio('../audios/adSound.mp3')
     meow = new Audio('../audios/meow-1.mp3')
+    heartbeat = new Audio('../audios/heartbeat.mp3')
     
+    // :3
+    drunkLevel = 0
 
     images = [
             '../images/soggy.jpg',
@@ -36,7 +40,7 @@ class SlotMachine {
     // initializing
     dabloons = 100
     loan = 0
-    timeLeft = 75
+    timeLeft = 90
     isSpinning = false
     spinCost = 20
     loanInterest = 1.20
@@ -147,6 +151,145 @@ class SlotMachine {
             this.currentSong.loop = true
             this.currentSong.play()
         })
+        
+        document.getElementById('shopButton').addEventListener('click', () => {
+            document.getElementById('shopStuff').classList.add('show')
+        })
+
+        document.getElementById('closeShopButton').addEventListener('click', () => {
+            document.getElementById('shopStuff').classList.remove('show')
+            document.getElementById('bottleCount').textContent = '0'
+        })
+
+        // alcohol quantity
+        let quantity = 0
+        document.getElementById('plusBottle').addEventListener('click', () => {
+            const maxBottles = Math.floor(this.dabloons / 50)
+            if (quantity < maxBottles) {
+                quantity++
+                document.getElementById('bottleCount').textContent = quantity
+            }
+        })
+
+        document.getElementById('minusBottle').addEventListener('click', () => {
+            if (quantity > 0) {
+                quantity--
+                document.getElementById('bottleCount').textContent = quantity
+            }
+        })
+
+        // BUY DRINK BUY BUY BUY
+        document.getElementById('buyAlcohol').addEventListener('click', () => {
+            const cost = quantity * 50
+            if (quantity > 0 && this.dabloons >= cost) {
+                this.dabloons -= cost
+                this.drunkLevel += quantity
+                this.applyDrunkEffect()
+                this.updateDisplays()
+                this.meow.play()
+                document.getElementById('shopStuff').classList.remove('show')
+                quantity = 0
+                document.getElementById('bottleCount').textContent = 0
+            }
+        })
+    }
+
+    // GETT DRUNK MAKE SCREEN WOBBLE WOBBLE
+    applyDrunkEffect() {
+        let style = document.getElementById('drunk-style')
+        if (!style) {
+            style = document.createElement('style')
+            style.id = 'drunk-style'
+            document.head.appendChild(style)
+        }
+
+        const intensity = Math.min(this.drunkLevel * 0.5, 5)
+
+        style.textContent = `
+
+            html, body {
+                overflow: hidden;
+            }
+            
+            body {
+                animation: distort ${3/intensity}s infinite ease-in-out;
+            }
+            
+            @keyframes distort {
+                0% { 
+                    transform: scale(1) rotate(0deg);
+                    filter: blur(0px);
+                }
+                25% { 
+                    transform: scale(${1 + intensity/30}) rotate(${intensity/2}deg);
+                    filter: blur(${intensity}px);
+                }
+                50% { 
+                    transform: scale(${1 - intensity/40}) rotate(-${intensity/2}deg);
+                    filter: blur(${intensity/2}px);
+                }
+                75% { 
+                    transform: scale(${1 + intensity/30}) rotate(${intensity/2}deg);
+                    filter: blur(${intensity}px);
+                }
+                100% { 
+                    transform: scale(1) rotate(0deg);
+                    filter: blur(0px);
+                }
+            }
+            
+            .reel img {
+                filter: blur(${intensity}px) brightness(${1 + intensity/10});
+                transform: scale(${1 + intensity/20});
+            }`
+
+        
+        // distort audios when drunk
+        this.currentSong.playbackRate = 1 - (intensity * 0.1)
+        this.currentSong.preservesPitch = false
+
+        this.musicSelect.disabled = true
+
+        this.heartbeat.volume = intensity * 0.2
+        this.heartbeat.loop = true
+        this.heartbeat.play()
+
+        this.mail.playbackRate = 1 - (intensity * 0.1)
+        this.mail.preservesPitch = false
+
+        this.reelSpin.playbackRate = 1 - (intensity * 0.1)
+        this.reelSpin.preservesPitch = false
+
+        this.loanAlert.playbackRate = 1 - (intensity * 0.1)
+        this.loanAlert.preservesPitch = false
+
+        setTimeout(() => {
+            if (this.drunkLevel > 0) {
+                this.drunkLevel--
+                this.applyDrunkEffect()
+            }
+
+            // fix all audios when drunk level is gone
+            if (this.drunkLevel === 0) {
+                style.remove()
+                this.currentSong.playbackRate = 1
+                this.currentSong.preservesPitch = true
+
+                this.heartbeat.pause()
+                this.heartbeat.currentTime = 0
+                
+                this.mail.playbackRate = 1
+                this.mail.preservesPitch = true
+
+                this.reelSpin.playbackRate = 1
+                this.reelSpin.preservesPitch = true
+
+                this.loanAlert.playbackRate = 1
+                this.loanAlert.preservesPitch = true
+
+                this.musicSelect.disabled = false
+            }
+        }, 30000)
     }
 
     showLoanStuff() {
@@ -159,7 +302,7 @@ class SlotMachine {
         if (!isNaN(amount) && amount >= 100) { // minimum loan amount
             this.dabloons += amount; // get moneys
             this.loan += Math.floor(amount * this.loanInterest); // interest
-            this.timeLeft = 75; // reset time
+            this.timeLeft = 90; // reset time
             this.updateDisplays();
             this.loanStuff.classList.remove('show');
             this.meow.play()
@@ -207,7 +350,7 @@ class SlotMachine {
         if (this.dabloons >= this.loan) {
             this.dabloons -= this.loan // pay loan
             this.loan = 0 // clear loan
-            this.timeLeft = 75
+            this.timeLeft = 90
             this.paymentStuff.classList.remove('show')
             this.updateDisplays()
             this.startTimer()
