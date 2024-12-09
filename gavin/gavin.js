@@ -203,6 +203,8 @@ function loadResults() {
             meow.pause()
             EXPLODE.play()
             check.src = 'meowBomb.jpg'
+            check.width = 212
+            check.height = 238
         }
     }
 
