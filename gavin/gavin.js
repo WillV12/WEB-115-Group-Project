@@ -20,7 +20,7 @@ let questions = {
     'What\'s your favorite sport' : ['FOOBALL', 'SOCK CAR', 'BASKEET BARL', 'smth else (killing my wife)'],
     'Where were you on the night of nov 9th, 1999?' : ['uhh.. being born?', 'killing my wife ;)', 'KILLING WIFE 👿', 'eating GAY stromboli'],
     'Umm, Im hungry... I\'ll wrtie another question later' : ['I killed my wife', 'SUPERSUPERSUPER FENTANYL', 'lord save me', 'MERRY CHRISTMAS'],
-    'Are you gay?!?!?!?!??!?!?!?!??' : ["I did it again...", 'I got another wife', 'I KILLED HER', 'Just Like the rest.....'],
+    'Are you gay?!?!?!?!??!?!?!?!??' : ["I did it again...", 'I\'m addicted to SUPERFENTANYL', 'I KILLED HER', 'I\m soooooo drunk'],
 }
 
 
