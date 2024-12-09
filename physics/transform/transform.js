@@ -1,6 +1,7 @@
 const inputForm = document.getElementById('inputForm')
 const clear = document.getElementById('clear')
-
+const e = Math.E
+const complex = math.complex(0, 1)
 const amp = .5
 
 
@@ -32,6 +33,14 @@ function combineWave(wave1, wave2, wave3){
     return newWave
 }
 
+function wrap(wave, rate){
+    let transform =  new Array
+    for (let index = 0; index<transform.length; index++){
+        value = math.evaluate(wave[index]*e.toExponential((2*Math.PI)*complex.im*rate*index))
+        return value
+    }
+}
+
 function display(){
 
     let freq1 = parseInt(document.getElementById('freq1').value)
@@ -42,8 +51,9 @@ function display(){
     freq2_y = generateWave(freq2)
     freq3_y = generateWave(freq3)
     newFreq_y = combineWave(freq1_y, freq2_y, freq3_y)
-
-    
+    thing = wrap(newFreq_y, 4)
+    console.log(thing)
+   
 
 
     let xlist = new Array
