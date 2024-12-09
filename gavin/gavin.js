@@ -138,11 +138,14 @@ let start = document.getElementById('start')
 start.addEventListener('click', function () {
     document.body.appendChild(completeQuestions[0])
     completeQuestions.splice(0,1)
-    let buttons = document.body.querySelectorAll('.answer')
-    buttons.forEach(button => {
-        button.addEventListener('click', () => {
-            document.querySelector('.special')?.classList.remove('special')
-            button.classList.add('special')
+    let areas = document.querySelectorAll('.question')
+    areas.forEach(area => {
+        let buttons = area.querySelectorAll('.answer')
+        buttons.forEach(button => {
+            button.addEventListener('click', () => {
+                area.querySelector('.special')?.classList.remove('special')
+                button.classList.add('special')
+            })
         })
     })
 }, {once : true})
@@ -151,11 +154,14 @@ start.addEventListener('click', function () {
 function loadQuestion(uh){
     let question = uh.at(-1)
     document.body.appendChild(completeQuestions[question])
-    let buttons = document.body.querySelectorAll('.answer')
-    buttons.forEach(button => {
-        button.addEventListener('click', () => {
-            document.querySelector('.special')?.classList.remove('special')
-            button.classList.add('special')
+    let areas = document.querySelectorAll('.question')
+    areas.forEach(area => {
+        let buttons = area.querySelectorAll('.answer')
+        buttons.forEach(button => {
+            button.addEventListener('click', () => {
+                area.querySelector('.special')?.classList.remove('special')
+                button.classList.add('special')
+            })
         })
     })
 }
@@ -180,18 +186,41 @@ function loadResults() {
     button2.textContent = 'return to home page'
     a.appendChild(button2)
 
+    let check = document.createElement('img')
+    check.src = 'thumb.jpg'
+    let meow = new Audio('mlem.mp3')
+    let EXPLODE = new Audio('explosion.mp3')
+    check.addEventListener('click', soundMoment)
+    
+    function soundMoment() {
+        if (meow.playbackRate < 1.4){
+            meow.currentTime = 0
+            meow.playbackRate += .01
+            meow.preservesPitch = false
+            meow.play()
+        } else {
+            check.removeEventListener('click', soundMoment)
+            meow.pause()
+            EXPLODE.play()
+            check.src = 'meowBomb.jpg'
+        }
+    }
 
 
+
+    check.style.userSelect = 'none'
 
     document.body.style.backgroundImage = 'url(\'bg.gif\')'
     document.body.style.fontFamily = "Georgia, 'Times New Roman', Times, serif"
+    document.body.style.textAlign = 'center'
+    document.body.style.alignItems = 'center'
     
     div.style.margin = 0
     div.style.textAlign = 'center'
     div.style.alignItems = 'center'
     div.style.padding = '20px'
+    div.style.borderStyle = 'solid'
     div.style.border = '2px'
-    div.style.borderColor = 'pink'
     div.style.marginTop = '30px'
 
     gayBox.style.textAlign = 'center'
@@ -205,6 +234,8 @@ function loadResults() {
     button.style.margin = '20%'
     button.style.textAlign = 'center'
     button.style.alignItems = 'center'
+    button.style.marginBottom = '0'
+    button.style.marginTop = '8%'
 
     button2.style.scale = 2
     button2.style.float = 'right'
@@ -212,9 +243,12 @@ function loadResults() {
     button2.style.padding = '6px'
     button2.style.textAlign = 'center'
     button2.style.alignSelf = 'center'
+    button2.style.marginBottom = '0'
+    button2.style.marginTop = '8%'
 
     div.appendChild(h1)
     gayBox.appendChild(gay)
+    gayBox.appendChild(check)
     div.appendChild(gayBox)
 
 
