@@ -22,6 +22,7 @@ class SlotMachine {
     adSound = new Audio('../audios/adSound.mp3')
     meow = new Audio('../audios/meow-1.mp3')
     heartbeat = new Audio('../audios/heartbeat.mp3')
+    ouch = new Audio('../audios/ouch.mp3')
     
     // :3
     drunkLevel = 0
@@ -67,7 +68,19 @@ class SlotMachine {
             '../images/ad4.jpg',
             '../images/ad6.jpg',
             '../images/ad7.jpg',
-            '../images/ad8.jpg'
+            '../images/ad8.jpg',
+            '../images/ad9.jpg',
+            '../images/ad10.jpg',
+            '../images/ad11.jpg',
+            '../images/ad12.jpg',
+            '../images/ad13.jpg',
+            '../images/ad14.jpg',
+            '../images/ad15.jpg',
+            '../images/ad16.jpg',
+            '../images/ad17.jpg',
+            '../images/ad18.jpg',
+            '../images/ad19.jpg',
+            '../images/ad20.jpg'
         ]
 
         // picks random ad
@@ -203,7 +216,8 @@ class SlotMachine {
             document.head.appendChild(style)
         }
 
-        const intensity = Math.min(this.drunkLevel * 0.5, 5)
+        const intensity = Math.min(this.drunkLevel * 0.5, 12) // screen intensity
+        const intensity2 = Math.min(this.drunkLevel * 0.5, 5) // music intensity
 
         style.textContent = `
 
@@ -239,29 +253,32 @@ class SlotMachine {
             }
             
             .reel img {
-                filter: blur(${intensity}px) brightness(${1 + intensity/10});
-                transform: scale(${1 + intensity/20});
+                filter: blur(${intensity}px) brightness(${1 + intensity/20});
+                transform: scale(${1 + intensity/50});
             }`
 
         
         // distort audios when drunk
-        this.currentSong.playbackRate = 1 - (intensity * 0.1)
+        this.currentSong.playbackRate = 1 - (intensity2 * 0.1)
         this.currentSong.preservesPitch = false
 
         this.musicSelect.disabled = true
 
-        this.heartbeat.volume = intensity * 0.2
+        this.heartbeat.volume = intensity2 * 0.2
         this.heartbeat.loop = true
         this.heartbeat.play()
 
-        this.mail.playbackRate = 1 - (intensity * 0.1)
+        this.mail.playbackRate = 1 - (intensity2 * 0.1)
         this.mail.preservesPitch = false
 
-        this.reelSpin.playbackRate = 1 - (intensity * 0.1)
+        this.reelSpin.playbackRate = 1 - (intensity2 * 0.1)
         this.reelSpin.preservesPitch = false
 
-        this.loanAlert.playbackRate = 1 - (intensity * 0.1)
+        this.loanAlert.playbackRate = 1 - (intensity2 * 0.1)
         this.loanAlert.preservesPitch = false
+
+        this.meow.playbackRate = 1 - (intensity2 * 0.1)
+        this.meow.preservesPitch = false
 
         setTimeout(() => {
             if (this.drunkLevel > 0) {
@@ -287,6 +304,9 @@ class SlotMachine {
                 this.loanAlert.playbackRate = 1
                 this.loanAlert.preservesPitch = true
 
+                this.meow.playbackRate = 1
+                this.meow.preservesPitch = true
+
                 this.musicSelect.disabled = false
             }
         }, 30000)
@@ -306,6 +326,7 @@ class SlotMachine {
             this.updateDisplays();
             this.loanStuff.classList.remove('show');
             this.meow.play()
+            this.ouch.play()
     
             // Restart the timer
             clearInterval(this.timer); // Clear any existing timer
