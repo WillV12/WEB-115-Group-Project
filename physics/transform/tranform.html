@@ -72,6 +72,7 @@
     <script src="transform.js" defer></script>
     <script src="https://cdn.plot.ly/plotly-2.35.2.min.js" charset="utf-8"></script>
     <script src="https://cdn.jsdelivr.net/npm/mathjs@14.0.0/lib/browser/math.min.js"></script>
+    <script src="https://www.desmos.com/api/v1.10/calculator.js?apiKey=dcb31709b452b1cf9dc26972add0fda6"></script>
 </head>
 <body>
     <h1>Fourier Transform</h1>
@@ -104,6 +105,15 @@
             oninput="hzUpdate(this.value, 3)"onchange="hzUpdate(this.value, 3)">
             <br>
             <p id="val3">Value: 1 Hz</p>
+            <br>
+            <br>
+            <label for="freq4">Wrap Frequency</label>
+            <input id="freq4" type="range" value="1" min="1" max="50" class="slider"
+            oninput="hzUpdate(this.value, 4)"onchange="hzUpdate(this.value, 4)">
+            <br>
+            <p id="val4">Value: 1 Hz</p>
+            <br>
+            <br>
         </form>
         <button id="clear" type="button" style="color: red;">Clear</button>
     </div>
@@ -113,6 +123,7 @@
         <div id="output2" style="float: left;width: 500px; height: 200px"></div>
         <div id="output3" style="float: right;width: 500px; height: 200px"></div>
         <div id="output4" style="float: left;width: 500px; height: 200px"></div>
+        <div id="output5" style="float: right;width: 500px; height: 200px"></div>
     </div>
     
     <script>
