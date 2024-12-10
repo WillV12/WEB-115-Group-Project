@@ -63,7 +63,6 @@ class SlotMachine {
     showRandomAd() {
         const adImages = [
             '../images/ad1.jpg',
-            '../images/ad2.jpg',
             '../images/ad3.jpg',
             '../images/ad4.jpg',
             '../images/ad6.jpg',
