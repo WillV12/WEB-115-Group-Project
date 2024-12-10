@@ -5,15 +5,18 @@ const complex = math.complex(0, 1)
 const amp = .5
 const desmos = document.getElementById('output5')
 let count = 0
-var calculator = Desmos.GraphingCalculator(desmos, 
-    object = {
-    "allowComplex": true,
-    "polarMode": true, 
-    "expressions": false, 
-    "keypad": false,
-    "settingsMenu": false,
-    "lockViewport": true,
-    "zoomFit": true})
+
+if (count = 1){
+    var calculator = Desmos.GraphingCalculator(desmos, 
+        object = {
+        "allowComplex": true,
+        "expressions": false, 
+        "keypad": false,
+        "settingsMenu": false,
+        "lockViewport": true,
+        "zoomFit": true})
+}
+
 
 
 
@@ -47,13 +50,13 @@ function combineWave(wave1, wave2, wave3){
 }
 
 function wrap(graph, f, hertz1, hertz2, hertz3){
- 
-    graph.setExpression({id: 'circle', latex: `((1*\\sin(2*\\pi*${hertz1}*x))+(1*\\sin(2*\\pi*${hertz2}*x))+(1*\\sin(2*\\pi*${hertz3}*x)))*e^{-2*\\pi*\\sqrt(-1)*${f}*x}`})
+
+    graph.setExpression({id: 'circle', latex: `((1*\\sin(2*\\pi*${hertz1}*x))+(1*\\sin(2*\\pi*${hertz2}*x))+(1*\\sin(2*\\pi*${hertz3}*x)))*e^{-2*\\pi*(\\sqrt{1})*${f}*x}`})
 }
 
 function display(){
 
-
+    count++
     let freq1 = parseInt(document.getElementById('freq1').value)
     let freq2 = parseInt(document.getElementById('freq2').value)
     let freq3 = parseInt(document.getElementById('freq3').value)
