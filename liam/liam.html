@@ -237,7 +237,7 @@
             padding: 15px 30px;
             border-radius: 10px;
             font-size: 32px;
-            font-family: "Comic Sans MS", "Comic Sans", cursive;
+            font-family: Georgia, 'Times New Roman', Times, serif
         }
 
         button:disabled {
@@ -257,7 +257,24 @@
             align-items: center;
         }
 
+        .stuff1 {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #1a1a1a;
+            justify-content: center;
+            align-items: center;
+            font-family: Georgia, 'Times New Roman', Times, serif
+        }
+
         .stuff.show {
+            display: flex;
+        }
+
+        .stuff1.show {
             display: flex;
         }
 
@@ -351,6 +368,23 @@
             100% {background-color: #2d2d2d;}
         }
 
+        @keyframes deathTurn{
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(25deg)
+        scale(0.9);
+            }
+        }
+        
+        .dying {
+            overflow: hidden;
+            animation: deathTurn 120s ease-in-out;
+            transform-origin: center center
+        }
+
         .loan-flash {
             animation: flashRed 0.5s ease-in-out 3
         }
@@ -439,11 +473,11 @@
     </div>
 
     <!--you die DIE DIE DIE FAILED TO PAY BACK DEBT-->
-    <div class="stuff" id="deathStuff">
+    <div class="stuff1" id="deathStuff">
         <div class="loan-content">
-            <div class="death-screen"> YOU DIED!!! YOU GOT SHOT IN THE HEAD!!</div>
-            <p>You failed to pay back your loan!</p>
-            <button id="homeScreenButton" class="dead-home-button">Leave the casino.</button>
+            <div class="death-screen"><b><h1 style="color: rgb(202, 17, 17)">YOU FAILED TO PAY BACK YOUR LOAN</h1></b></div>
+            <p>You will bathe in the blood of your transgressions.<br><br>You may believe there will be mercy on your soul,<br>but you ultimately will never find any.<br><br>Worms will inhabit your skull and birds will pick at your flesh<br>as your soul falls down further into the darkest pits of hell,<br><br>where your presence will be long awaited.</p>
+            <button id="homeScreenButton" class="dead-home-button" style="color: rgb(219, 56, 56);">SUCCUMB TO YOUR FATE</button>   
         </div>
     </div>
 

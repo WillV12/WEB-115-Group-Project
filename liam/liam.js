@@ -1,6 +1,8 @@
 class SlotMachine {
     // initializews the game stats and stuff :3
-    
+
+    isDead = false
+
     songs = {
         boneDepot: new Audio('../audios/BoneDepot.mp3'),
         LegalWoes: new Audio('../audios/LegalWoes.mp3'),
@@ -42,7 +44,7 @@ class SlotMachine {
     // initializing
     dabloons = 100
     loan = 0
-    timeLeft = 90
+    timeLeft = 5
     isSpinning = false
     spinCost = 20
     loanInterest = 1.20
@@ -63,8 +65,10 @@ class SlotMachine {
     showRandomAd() {
         const adImages = [
             '../images/ad1.jpg',
+            '../images/ad2.jpg',
             '../images/ad3.jpg',
             '../images/ad4.jpg',
+            '../images/ad5.jpg',
             '../images/ad6.jpg',
             '../images/ad7.jpg',
             '../images/ad8.jpg',
@@ -79,8 +83,13 @@ class SlotMachine {
             '../images/ad17.jpg',
             '../images/ad18.jpg',
             '../images/ad19.jpg',
-            '../images/ad20.jpg'
+            '../images/ad20.jpg',
+            '../images/ad21.jpg'
         ]
+
+        if (this.isDead) {
+            return
+        }
 
         // picks random ad
         this.adImage.src = adImages[Math.floor(Math.random() * adImages.length)]
@@ -321,7 +330,7 @@ class SlotMachine {
         if (!isNaN(amount) && amount >= 100) { // minimum loan amount
             this.dabloons += amount; // get moneys
             this.loan += Math.floor(amount * this.loanInterest); // interest
-            this.timeLeft = 90; // reset time
+            this.timeLeft = 5; // reset time
             this.updateDisplays();
             this.loanStuff.classList.remove('show');
             this.meow.play()
@@ -370,7 +379,7 @@ class SlotMachine {
         if (this.dabloons >= this.loan) {
             this.dabloons -= this.loan // pay loan
             this.loan = 0 // clear loan
-            this.timeLeft = 90
+            this.timeLeft = 5
             this.paymentStuff.classList.remove('show')
             this.updateDisplays()
             this.startTimer()
@@ -402,7 +411,13 @@ class SlotMachine {
 
     // if they die
     die() {
+
+        this.isDead = true
+
         this.stopAllAudio()
+
+        document.documentElement.classList.add('dying')
+        document.getElementById('alien').style.display = 'none'
 
         // stop any possible drunk effects
         this.drunkLevel = 0
@@ -428,12 +443,14 @@ class SlotMachine {
         clearInterval(this.timer)
 
         this.musicSelect.disabled = true
-        
-        let gameOver = new Audio('../audios/gameOver.mp3')
+        let sayonara = new Audio('../audios/sayonara.mp3')
         let die = new Audio('../audios/die.mp3')
-        gameOver.volume = 1
-        gameOver.play()
+        let bigheartbeat = new Audio('../audios/bigheartbeat.mp3')
+        sayonara.play()
         die.play()
+        bigheartbeat.loop()
+        bigheartbeat.play()
+
     }
     
     // updates all numbers on screen
