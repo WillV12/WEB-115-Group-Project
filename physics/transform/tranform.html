@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="../../images/wave.png">
+    <title>Fourier Transform</title>
+    <style>
+        h1 {
+        padding: 20px;
+         text-align: center;
+         align-items: center;
+         font-weight: bolder;
+         font-family:Georgia, 'Times New Roman', Times, serif; 
+        }
+        h2 {
+        padding: 20px;
+         text-align: center;
+         align-items: center;   
+        }
+        body {
+            display: block;
+            text-align: center;
+            align-items: center;
+            background-color: #1a1a1a; 
+            color: cornflowerblue
+        }
+        button {
+            margin: 10px; 
+            border-radius: 8px; 
+            outline: 1px solid white; 
+            background-color: #1a1a1a; 
+            color: cornflowerblue; 
+            font-weight: bold;
+        }
+        button:hover {
+            transform: scale(1.05);
+        }
+        label {
+            font-weight: bolder;
+        }
+        /* I did not make this slider styling, I only modified it. Here is the source https://codepen.io/jonnaru/pen/JjXyKYM*/
+        .slider {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 50%;
+            height: 5px;
+            background: #000;
+            outline: none;
+            border: 2px solid cornflowerblue;
+            border-radius: 8px;
+        }
+
+
+        /* for chrome/safari */
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 10px;
+            height: 20px;
+            background: #000;
+            cursor: pointer;
+            border: 2px solid cornflowerblue;
+            border-radius: 4px;
+        }
+
+        /* for firefox */
+        .slider::-moz-range-thumb {
+            width: 10px;
+            height: 20px;
+            background: #000;
+            cursor: pointer;
+            border: 2px solid cornflowerblue;
+            border-radius: 4px;
+        }
+    </style>
+
+    <script src="transform.js" defer></script>
+    <script src="https://cdn.plot.ly/plotly-2.35.2.min.js" charset="utf-8"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjs@14.0.0/lib/browser/math.min.js"></script>
+    <script src="https://www.desmos.com/api/v1.10/calculator.js?apiKey=dcb31709b452b1cf9dc26972add0fda6"></script>
+</head>
+<body>
+    <h1>Fourier Transform</h1>
+    <h2>SCROLL DOWN!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!</h2>
+    <div style="width:100%; height: 5px; background-color: cornflowerblue; outline: 3px solid white; margin-bottom: 15px;
+    align-items: center; display: flex; text-align: center; flex-direction: column;"></div>
+    <div style="float: left; margin: 10px; padding: 10px; background-color: #2d2d2d; border-radius: 20px; outline: 3px solid white">
+    <a href="../../Mainpage.html"><button>Home</button></a>
+    <br>
+    <br>
+    <a href="../Pgames.html"><button>Back</button></a>
+    </div>
+
+    <div id="rightcolumn" style="float: right; outline: 3px solid white; background-color: #2d2d2d; border-radius: 10px; padding: 10px;">
+        <h2>Frequency Input</h2>
+        <form id="inputForm" oninput="display()">
+            <label for="freq1">Frequency 1</label>
+            <input id="freq1" type="range" value="1" min="1" max="50" class="slider" 
+            oninput="hzUpdate(this.value, 1)"onchange="hzUpdate(this.value, 1)">
+            <br>
+            <p id="val1">Value: 1 Hz</p>
+            <br>
+            <br>
+            <label for="freq2">Frequency 2</label>
+            <input id="freq2" type="range" value="1" min="1" max="50" class="slider"
+            oninput="hzUpdate(this.value, 2)"onchange="hzUpdate(this.value, 2)">
+            <br>
+            <p id="val2">Value: 1 Hz</p>
+            <br>
+            <br>
+            <label for="freq3">Frequency 3</label>
+            <input id="freq3" type="range" value="1" min="1" max="50" class="slider"
+            oninput="hzUpdate(this.value, 3)"onchange="hzUpdate(this.value, 3)">
+            <br>
+            <p id="val3">Value: 1 Hz</p>
+            <br>
+            <br>
+            <label for="freq4">Wrap Frequency</label>
+            <input id="freq4" type="range" value="1" min="1" max="50" class="slider"
+            oninput="hzUpdate(this.value, 4)"onchange="hzUpdate(this.value, 4)">
+            <br>
+            <p id="val4">Value: 1 Hz</p>
+            <br>
+        </form>
+        <button id="random" type="button" style="color: orange">Random</button>
+        <br>
+        <br>
+        <button id="clear" type="button" style="color: red;">Clear</button>
+        <br>
+        <br>
+        <a href="https://www.youtube.com/watch?v=spUNpyF58BY&ab_channel=3Blue1Brown" 
+        target="_blank">
+        <button style="color: green;">More Info</button>
+        </a>
+    </div>
+    <div id="centerColumn" style="float: right ;outline: 3px solid white; 
+    height: 1000; width: 1000px; margin-left: 100px; margin-right: 125px; background-color: #2d2d2d;">
+        <div id="output1" style="width: 1000px; height: 200px"></div>
+        <div id="output2" style="float: left;width: 500px; height: 200px"></div>
+        <div id="output3" style="float: right;width: 500px; height: 200px"></div>
+        <div id="output4" style="float: left;width: 500px; height: 200px"></div>
+        <div id="output5" style="float: right;width: 500px; height: 200px"></div>
+        <div id="output6" style="margin-top: 400px;width: 1000; height: 200px"></div>
+    </div>
+    <div id="info" style="float: right ;outline: 3px solid white; 
+    height: 1000; width: 1000px; margin-top: 50px; margin-right: 400px; background-color: #2d2d2d;
+    border-radius: 15px; margin-bottom: 10px;">
+    </div>
+    <script>
+        var arc = new Audio(`../audios/arc.m4a`)
+        arc.play()
+        arc.volume = 0.2
+        arc.loop = true
+    </script>
+</body>
+</html>
