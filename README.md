@@ -54,6 +54,15 @@ Gay meter
 At any Time you can leave either page by selecting the "home" button at the top
 If you are on the Gay meter page, you can return to the gay test using the "back" button
 
+
+
+
+
+
+
+
+
+
 <br><br>
 
 # LIAM -- FLOPPA'S CASINO
