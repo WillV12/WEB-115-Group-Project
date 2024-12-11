@@ -19,7 +19,7 @@ function generateDesmos(){
         circle = Desmos.GraphingCalculator(desmos, 
         object = {
         "allowComplex": true,
-        "polarMode": true,
+        "polarMode": false,
         "expressions": false, 
         "keypad": false,
         "settingsMenu": true,
@@ -84,13 +84,14 @@ function interpret(graph, hertz1, hertz2, hertz3){
               '41', '42', '43', '44', '45', '46', '47', '48', '49', '50']
         },
         {
-            latex: `-\\imag(1/(10)\\int_0^{50}((\\sin(2\\pi${hertz1}t))+(1\\sin(2\\pi${hertz2}t))+(\\sin(2\\pi${hertz3}t)))
+            latex: `-\\imag(\\int_0^{5}((\\sin(2\\pi${hertz1}t))+(1\\sin(2\\pi${hertz2}t))+(\\sin(2\\pi${hertz3}t)))
             e^{-2\\pi(\\sqrt{-1})xt}dt)`,
             lines: 'true',
             color: `#2d70b3`
         },
     ]})
 }
+
 
 function display(){
     if (count == 1){
