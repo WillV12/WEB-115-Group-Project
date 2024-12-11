@@ -1,6 +1,6 @@
 /// <reference path="./lib/Intellisense/js-turtle_hy.ts" />
 
-
+// I made this project a month ago and decided to add to this project
 
 /* File for physics calculation, drawing, and graphing*/
 
