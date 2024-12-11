@@ -44,7 +44,7 @@ class SlotMachine {
     // initializing
     dabloons = 100
     loan = 0
-    timeLeft = 5
+    timeLeft = 90
     isSpinning = false
     spinCost = 20
     loanInterest = 1.20
@@ -330,7 +330,7 @@ class SlotMachine {
         if (!isNaN(amount) && amount >= 100) { // minimum loan amount
             this.dabloons += amount; // get moneys
             this.loan += Math.floor(amount * this.loanInterest); // interest
-            this.timeLeft = 5; // reset time
+            this.timeLeft = 90; // reset time
             this.updateDisplays();
             this.loanStuff.classList.remove('show');
             this.meow.play()
@@ -379,7 +379,7 @@ class SlotMachine {
         if (this.dabloons >= this.loan) {
             this.dabloons -= this.loan // pay loan
             this.loan = 0 // clear loan
-            this.timeLeft = 5
+            this.timeLeft = 90
             this.paymentStuff.classList.remove('show')
             this.updateDisplays()
             this.startTimer()
