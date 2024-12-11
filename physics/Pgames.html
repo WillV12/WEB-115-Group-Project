@@ -32,15 +32,15 @@
 </head>
 <body>
     <img src="../images/nintendo.gif">
-    <div><a href="projectile\physics.html"><button style="background-image: url('penguin-attack.gif');" onmouseover="launch()" onmouseout="stop()">Projectile motion</button></a></div>
-    <div><a href="transform\tranform.html"><button style="background-image: url('wv.gif');" onmouseover="wave()" onmouseout="stop()">Fourier Transform</button></a></div>
-    <div><a href="../Mainpage.html"><button>Home</button></a></div>
+    <div><a href="projectile\physics.html"><button style="background-image: url('../images/penguin-attack.gif');" onmouseover="launch()" onmouseout="stop()">Projectile motion</button></a></div>
+    <div><a href="transform\tranform.html"><button style="background-image: url('../images/wv.gif');" onmouseover="wave()" onmouseout="stop()">Fourier Transform</button></a></div>
+    <div><a href="../Mainpage.html"><button style="background-image: url(../images/ad1.jpg);">Home</button></a></div>
 
     
     <script>
-        var firework = new Audio('audios/launch.mp3')
-        var waves = new Audio('audios/wave.mp3')
-        var music = new Audio('audios/background.m4a')
+        var firework = new Audio('../audios/launch.mp3')
+        var waves = new Audio('../audios/wave.mp3')
+        var music = new Audio('../audios/background.m4a')
         music.play()
         music.volume = .15
         music.loop = true
