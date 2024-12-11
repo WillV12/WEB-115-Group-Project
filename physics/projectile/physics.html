@@ -7,6 +7,17 @@
       <link type="text/css" rel="stylesheet" href="lib/turtle.css" />
       <script src="https://cdn.plot.ly/plotly-2.35.2.min.js" charset="utf-8"></script>
       <meta charset="utf-8">
+      <style>
+         button {
+            margin: 10px; 
+            border-radius: 8px; 
+            outline: 1px solid white; 
+            background-color: #1a1a1a; 
+            color: orange; 
+            font-weight: bold;
+         }
+        
+      </style>
    </head>
    <body>
       <div id="wrap">
@@ -23,8 +34,18 @@
             <canvas id="turtlecanvas" width="800" height="500"></canvas>
             <canvas id="imagecanvas" width="800" height="500" style="display:none"></canvas>
             <span id="message" class="message-hide">Coordinates has been copied to clipboard</span>
-            <input type="button" id="data" value="View Data">
-            <input type="button" id="remove" value = "Hide Data"> 
+            <input type="button" id="data" value="View Data" style="margin: 10px; 
+            border-radius: 8px; 
+            outline: 1px solid white; 
+            background-color: #1a1a1a; 
+            color: orange; 
+            font-weight: bold;">
+            <input type="button" id="remove" value = "Hide Data" style="margin: 10px; 
+            border-radius: 8px; 
+            outline: 1px solid white; 
+            background-color: #1a1a1a; 
+            color: orange; 
+            font-weight: bold;"> 
             <div id="content"></div>
          </div> <!-- midcolumn -->
         <div id="rightcolumn">
@@ -32,8 +53,18 @@
          <form>
             <label for="color_selector">Select your the color of the trajectory:</label>
             <input type="color" id="color_selector" value="#000000">
-            <input type="button" id="colorButton" value="Select">
-            <input type = "button" id="randomize" value="Random">
+            <input type="button" id="colorButton" value="Select" style="margin: 10px; 
+            border-radius: 8px; 
+            outline: 1px solid white; 
+            background-color: #1a1a1a; 
+            color: orange; 
+            font-weight: bold;">
+            <input type = "button" id="randomize" value="Random" style="margin: 10px; 
+            border-radius: 8px; 
+            outline: 1px solid white; 
+            background-color: #1a1a1a; 
+            color: orange; 
+            font-weight: bold;">
             <br>
             <br>
             <label for="X">X Value:</label>
@@ -50,7 +81,12 @@
             <br>
             <br>
             <button type="submit" id="calculate">Calculate</button>
-            <input type="button" id="reset" value="Reset">
+            <input type="button" id="reset" value="Reset" style="margin: 10px; 
+            border-radius: 8px; 
+            outline: 1px solid white; 
+            background-color: #1a1a1a; 
+            color: orange; 
+            font-weight: bold;">
             <hr>
             <br>
          </form> 

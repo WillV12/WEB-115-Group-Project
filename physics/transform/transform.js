@@ -182,5 +182,6 @@ random.addEventListener('click', (event)=>{
 
 
 
-info.innerHTML = `NOTE FOR DESMOS PLOTS:<br>-Go into settings (Button with the wrench icon)<br>-Scroll down and turn on complex mode`
+info.innerHTML = `NOTE FOR DESMOS PLOTS:<br>-Go into settings (Button with the wrench icon)<br>-Scroll down and turn on complex mode<br>
+- You will need to zoom out and slide over on the bottom graph<br><br>FOR ALL NON-Desmos plot:<br>- X-Axis = Time(ms)`
 
