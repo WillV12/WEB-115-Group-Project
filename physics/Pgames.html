@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="../images/physics.jpg">
+    <title>Phyics Games</title>
+    <style>
+        body {
+            align-items: center;
+            text-align: center;
+            display: block;
+            background-color: #1a1a1a; 
+
+        }
+        button {
+            width: 1600px; 
+            height: 180px; 
+            margin: 10px;
+            border-radius: 50px;
+            background-size: 1600px 180px;
+            font-weight: bolder;
+            font-size: larger;
+            color: red;
+            outline: 5px solid red;
+            background-color: white;
+        }
+        button:hover {
+            transform: scale(1.01);
+        }
+    </style>
+</head>
+<body>
+    <img src="../images/nintendo.gif">
+    <div><a href="projectile\physics.html"><button style="background-image: url('penguin-attack.gif');" onmouseover="launch()" onmouseout="stop()">Projectile motion</button></a></div>
+    <div><a href="transform\tranform.html"><button style="background-image: url('wv.gif');" onmouseover="wave()" onmouseout="stop()">Fourier Transform</button></a></div>
+    <div><a href="../Mainpage.html"><button>Home</button></a></div>
+
+    
+    <script>
+        var firework = new Audio('audios/launch.mp3')
+        var waves = new Audio('audios/wave.mp3')
+        var music = new Audio('audios/background.m4a')
+        music.play()
+        music.volume = .15
+        music.loop = true
+
+        function launch(){
+            firework.play()
+            music.volume = .25
+        }
+
+
+        function wave(){
+            waves.play()
+            music.volume = 0.25
+        }
+        
+        function stop(){
+            waves.pause()
+            firework.pause()
+            waves.currentTime = 0
+            firework.currentTime = 0
+        }
+
+    </script>
+</body>
+</html>
